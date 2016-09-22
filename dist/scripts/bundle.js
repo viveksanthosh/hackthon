@@ -96940,7 +96940,7 @@ var Display = function (_React$Component) {
         _this.state = {
             chat: [],
             message: "",
-            nextQuestion: 0
+            nextQuestion: {}
         };
         _this._onChatSubmit = _this._onChatSubmit.bind(_this);
         _this._onChange = _this._onChange.bind(_this);
@@ -96980,6 +96980,7 @@ var Display = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            console.log(this.state.nextQuestion);
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
@@ -97132,7 +97133,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var fields = ['Vivek', 'App'];
+var fields = ['Product', 'Delivery'];
 
 var Display = function (_React$Component) {
     _inherits(Display, _React$Component);

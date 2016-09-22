@@ -4,7 +4,7 @@ import React from 'react';
 import StarGrid from './StarGrid';
 import queryString from 'query-string';
 import postCall from '../action/PostCall'
-const fields = ['Vivek', 'App'];
+const fields = ['Product', 'Delivery'];
 
 export default class Display extends React.Component {
     constructor(props) {

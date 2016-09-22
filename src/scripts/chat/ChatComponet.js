@@ -12,7 +12,7 @@ export default class Display extends React.Component {
         this.state = {
             chat: [],
             message: "",
-            nextQuestion: 0
+            nextQuestion: {}
         };
         this._onChatSubmit = this._onChatSubmit.bind(this);
         this._onChange = this._onChange.bind(this);
@@ -43,6 +43,7 @@ export default class Display extends React.Component {
     }
 
     render() {
+        console.log(this.state.nextQuestion)
         return (
             <div className="container">
                 <br/><br/><br/><br/>

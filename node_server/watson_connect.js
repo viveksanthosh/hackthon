@@ -9,13 +9,16 @@ var Watson = function () {
             }).then(function (result) {
                 var tone = (result.body.document_tone.tone_categories);
 
-                resolve(that.toneMapper(tone[0].tones));
+                resolve(that.extractHappiness(tone[0].tones));
 
             }).catch(function (err) {
                 console.log(err);
             });
         });
 
+    };
+    this.extractHappiness = function (response) {
+        return response[3]
     };
     this.toneMapper = function (tones) {
         tones.sort(function (toneA, toneB) {
