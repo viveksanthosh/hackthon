@@ -12,7 +12,7 @@ var dataStore = function () {
     };
 
     this.getData = function () {
-        return require('./../jsonData/data.json');
+        return require('./data.json');
     };
 
 };

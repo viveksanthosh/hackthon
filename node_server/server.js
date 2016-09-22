@@ -1,7 +1,7 @@
 var express = require('express');
-var dataStore = require('./jsonManuplitation/dataStore');
-var ratingStore = require('./jsonManuplitation/ratingStore');
-var questions = require('./jsonData/questionMap').questions;
+var dataStore = require('./dataStore');
+var ratingStore = require('./ratingStore');
+var questions = require('./questionMap').questions;
 var router = express.Router();
 var app = express();
 var bodyParser = require('body-parser');
@@ -27,8 +27,8 @@ router.post('/conversation', function (req, res) {
 });
 
 router.get('/history', function (req, res) {
-    require('./jsonManuplitation/resetData');
-    dataStore = require('./jsonManuplitation/dataStore');
+    require('./resetData');
+    dataStore = require('./dataStore');
     var botData = "@Bot, Hello, how are you today? We would like to get some feedback on your purchase \n";
     botData += questions[0];
     dataStore.addData("bot", botData);

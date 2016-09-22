@@ -7,7 +7,7 @@ var dataStore = function () {
     };
 
     this.getData = function () {
-        return require('./../jsonData/ratings.json');
+        return require('./ratings.json');
     };
 
 };
