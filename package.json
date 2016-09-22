@@ -28,6 +28,7 @@
     "query-string": "^4.2.3",
     "react": "15.0.0",
     "react-dom": "15.0.0",
+    "react-router": "^2.8.1",
     "request": "^2.74.0",
     "vinyl-source-stream": "1.1.0"
   }

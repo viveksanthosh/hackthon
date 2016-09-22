@@ -2,6 +2,8 @@
 
 import React from 'react';
 import postCall from '../action/PostCall';
+import getCall from '../action/GenericGet';
+
 
 const chatAlign = ["left", "right"];
 export default class Display extends React.Component {
@@ -13,6 +15,12 @@ export default class Display extends React.Component {
         };
         this._onChatSubmit = this._onChatSubmit.bind(this);
         this._onChange = this._onChange.bind(this);
+    }
+
+    componentWillMount(){
+        getCall('http://localhost:8000/history').then((data)=>{
+            this.setState({chat:data.body});
+        })
     }
 
     _onChatSubmit() {

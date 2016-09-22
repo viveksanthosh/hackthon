@@ -3,6 +3,7 @@
 import React from 'react';
 import StarGrid from './StarGrid';
 import queryString from 'query-string';
+import postCall from '../action/PostCall'
 const fields = ['Vivek', 'App'];
 
 export default class Display extends React.Component {
@@ -21,6 +22,7 @@ export default class Display extends React.Component {
             selected: selectedFields
         };
         this._onClick = this._onClick.bind(this);
+        this._onSubmit= this._onSubmit.bind(this);
     }
 
     _onClick(event) {
@@ -33,6 +35,7 @@ export default class Display extends React.Component {
             if (this.state.selected[key] !== 0) {
                 selected++;
             }
+
             if (this.state.selected[key] <= 2) {
                 twoOrLess++;
             }
@@ -59,9 +62,15 @@ export default class Display extends React.Component {
         });
     }
 
+    _onSubmit(){
+        postCall('http://localhost:8000/submitRatings', this.state.selected);
+        this.props.history.push("chat");
+
+    }
+
     render() {
         const parsed = queryString.parse(location.search);
-        console.log(parsed);
+        console.log(this.state);
         let show = this.state.show;
         let starRow = this._createStarRow();
         return (
@@ -76,9 +85,9 @@ export default class Display extends React.Component {
                 <div style={{"textAlign": "center"}}>
                     {show.skip && <input type="button" disabled={show.disableSkip}style={{"fontSize": "20px"}} className="btn btn-primary"
                                          value="Skip"/>}
-                    {!show.skip && <input type="button" style={{"fontSize": "20px"}} className="btn btn-primary"
+                    {!show.skip && <input onClick={this._onSubmit} type="button" style={{"fontSize": "20px"}} className="btn btn-primary"
                                          value="Submit"/>}
-                    {(!show.skip&& show.chat) && <input type="button" style={{"fontSize": "20px"}} className="btn btn-success"
+                    {(!show.skip&& show.chat) && <input  type="button" style={{"fontSize": "20px"}} className="btn btn-success"
                                           value="Chat"/>}
 
                 </div>
