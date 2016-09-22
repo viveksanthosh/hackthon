@@ -11,7 +11,8 @@ export default class Display extends React.Component {
         super(props);
         this.state = {
             chat: [],
-            message: ""
+            message: "",
+            nextQuestion: 0
         };
         this._onChatSubmit = this._onChatSubmit.bind(this);
         this._onChange = this._onChange.bind(this);
@@ -19,15 +20,19 @@ export default class Display extends React.Component {
 
     componentWillMount(){
         getCall('http://localhost:8000/history').then((data)=>{
-            this.setState({chat:data.body});
+            console.log(data.body)
+            this.setState({nextQuestion:data.body.nextQuestion});
+            this.setState({chat:data.body.conversation});
         })
     }
 
     _onChatSubmit() {
         postCall("http://localhost:8000/conversation", {
-            "message": this.state.message
+            "message": this.state.message,
+            "questionNumber": this.state.nextQuestion
         }).then((response)=> {
-           this.setState({chat: response.body});
+            this.setState({nextQuestion:response.body.nextQuestion});
+            this.setState({chat: response.body.conversation});
         })
 
     }
@@ -38,7 +43,6 @@ export default class Display extends React.Component {
     }
 
     render() {
-        console.log(this.state.message);
         return (
             <div className="container">
                 <br/><br/><br/><br/>

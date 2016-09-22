@@ -1,6 +1,7 @@
 var express = require('express');
 var dataStore = require('./jsonManuplitation/dataStore');
 var ratingStore = require('./jsonManuplitation/ratingStore');
+var questions = require('./jsonData/questionMap').questions;
 var router = express.Router();
 var app = express();
 var bodyParser = require('body-parser');
@@ -17,20 +18,25 @@ app.use(function (req, res, next) {
 router.post('/conversation', function (req, res) {
     var userMessage = "@User: " + req.body.message;
     dataStore.addData("user", userMessage);
-
-    var botMessage = "@Bot: " + "i'm watson";
+    var botMessage = "@Bot: " + questions[req.body.questionNumber];
     dataStore.addData("bot", botMessage);
 
     var chatHistory = dataStore.getData();
-    res.status(201).json(chatHistory.history);
+    res.status(201).json({conversation: chatHistory.history, nextQuestion: ++req.body.questionNumber});
 
 });
 
-router.get('/history', function(req, res){
-   res.status(200).json( dataStore.getData().history);
+router.get('/history', function (req, res) {
+    require('./jsonManuplitation/resetData');
+    dataStore = require('./jsonManuplitation/dataStore');
+    var botData = "@Bot, Hello, how are you today? We would like to get some feedback on your purchase \n";
+    botData += questions[0];
+    dataStore.addData("bot", botData);
+
+    res.status(200).json({conversation: dataStore.getData().history, nextQuestion: 1});
 });
 
-router.post('/submitRatings', function(req, res){
+router.post('/submitRatings', function (req, res) {
     ratingStore.setData(req.body);
     res.status(200).send();
 });

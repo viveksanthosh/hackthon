@@ -96939,7 +96939,8 @@ var Display = function (_React$Component) {
 
         _this.state = {
             chat: [],
-            message: ""
+            message: "",
+            nextQuestion: 0
         };
         _this._onChatSubmit = _this._onChatSubmit.bind(_this);
         _this._onChange = _this._onChange.bind(_this);
@@ -96952,7 +96953,9 @@ var Display = function (_React$Component) {
             var _this2 = this;
 
             (0, _GenericGet2.default)('http://localhost:8000/history').then(function (data) {
-                _this2.setState({ chat: data.body });
+                console.log(data.body);
+                _this2.setState({ nextQuestion: data.body.nextQuestion });
+                _this2.setState({ chat: data.body.conversation });
             });
         }
     }, {
@@ -96961,9 +96964,11 @@ var Display = function (_React$Component) {
             var _this3 = this;
 
             (0, _PostCall2.default)("http://localhost:8000/conversation", {
-                "message": this.state.message
+                "message": this.state.message,
+                "questionNumber": this.state.nextQuestion
             }).then(function (response) {
-                _this3.setState({ chat: response.body });
+                _this3.setState({ nextQuestion: response.body.nextQuestion });
+                _this3.setState({ chat: response.body.conversation });
             });
         }
     }, {
@@ -96975,7 +96980,6 @@ var Display = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            console.log(this.state.message);
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
