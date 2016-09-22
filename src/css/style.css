@@ -1,0 +1,154 @@
+.body{
+    font-family:  "Proxima Nova", "helvetica neue", helvetica, arial, sans-serif;
+    color: #762457;
+
+}
+
+footer{
+    position:fixed;
+    bottom: 0;
+    background-color:white;
+    width: 100%;
+    text-align: left;
+    margin-top: 1.5in;
+    line-height: 10px;
+    text-indent: 8px;
+    color:grey;
+    font-size:small;
+    font-family: "Arial Unicode MS";
+}
+
+.navbar-brand > img{
+    max-width: 80%;
+    vertical-align: middle;
+    position: inherit;
+    height:auto;
+    padding: 0px 0px 0px 0px;
+    margin-bottom: -8px;
+    margin-left: -12px;
+    margin-top: -16px;
+    background-color:transparent;
+}
+
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top, #762457 0%,#762457 100%);
+    background-image:      -o-linear-gradient(top, #762457 0%, #762457 100%);
+    /* background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222)); */
+    /* background-image:         linear-gradient(to bottom, #3c3c3c 0%, #222 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-radius: 0px;
+    background-color: #762457 !important;
+    border-color: #762457;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #00b3ee;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .active > a {
+    background-image: -webkit-linear-gradient(top, #762457 0%, #762457 100%);
+    background-image:      -o-linear-gradient(top, #762457 0%, #762457 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#762457), to(#762457));
+    background-image:         linear-gradient(to bottom, #762457 0%, #762457 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#762457', endColorstr='#762457', GradientType=0);
+    background-repeat: repeat-x;
+    -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background-color: #f9f9f9;
+}
+
+.dropdown-menu > li > a {
+    color: #337ab7;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #00b3ee;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #337ab7;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #00b3ee;
+    background-color: transparent;
+
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+}
+/* for buttons*/
+.btn {
+    padding: 3px 8px 3px 8px;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 25px;
+
+}
+
+.control-label{
+    font-family: Tesco;
+    font-size: 14px;
+}
+h3 {
+    font-size:23px;
+    font-weight: bold;
+    font-family: "Tesco";
+    /*color:#762457;*/
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    margin-left: 11px;
+    padding: 3px 16px 3px 14px;
+}
+
+.form-control {
+    display: block;
+    width: 85%;
+    height: 30px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/*h3{color:darkslategray}
+
+label {color:grey }
+label {font-size:13px}
+label {font-family: "Lucida Sans Typewriter"}*/
+
+
+/*for mouse over start*/
+
+
+/*for mouse over end*/
