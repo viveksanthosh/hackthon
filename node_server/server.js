@@ -1,5 +1,6 @@
 var express = require('express');
 var dataStore = require('./dataStore');
+var graphStrore = require('./graphStore');
 var ratingStore = require('./ratingStore');
 var watson = require('./watson_connect');
 var questions = require('./questionMap').questions;
@@ -19,14 +20,19 @@ app.use(function (req, res, next) {
 router.post('/conversation', function (req, res) {
     var userMessage = "@User: " + req.body.message;
     var previousQuestion = req.body.questionNumber.previousQuestion;
-    watson.toneAnalise(req.body.message).then(joyData=> {
-        console.log(previousQuestion + joyData.score);
-    });
-    dataStore.addData("user", userMessage);
-    console.log(req.body.questionNumber);
+
     var toAsk = req.body.questionNumber.toAsk;
     var currentQuestion = req.body.questionNumber.current;
     var botMessage = "";
+
+    //answer, previous question, category
+    watson.toneAnalise(req.body.message, previousQuestion ,toAsk[currentQuestion[0]]).then(joyData=> {
+       // graphStrore.addData(toAsk[currentQuestion[0]]);
+
+        //console.log(previousQuestion + joyData.score);
+        //console.log(toAsk[currentQuestion[0]]);
+    });
+    dataStore.addData("user", userMessage);
 
     if (currentQuestion === 'end') {
         botMessage = "@Bot: " + "Thank yoo for taking our survey, have a nice day";
@@ -91,7 +97,7 @@ function questionsToBeAsked() {
     else if (rating.Delivery <= 2) {
         return (["Delivery"]);
     } else {
-        return (["Process, Navigation"]);
+        return (["Process", "Navigation"]);
     }
 
 }

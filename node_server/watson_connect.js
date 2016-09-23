@@ -1,14 +1,17 @@
 var postCall = require('./PostCall');
+var graphStore = require('./graphStore');
+
 var toneAnaliseUrl = "https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?version=2016-05-19";
 var Watson = function () {
-    this.toneAnalise = function (text) {
+    this.toneAnalise = function (text, question, category) {
         var that = this;
         return new Promise(function (resolve, reject) {
             postCall(toneAnaliseUrl, {
                 "text": text
             }).then(function (result) {
                 var tone = (result.body.document_tone.tone_categories);
-
+                console.log(that.extractHappiness(tone[0].tones));
+                graphStore.addData(category, question, (that.extractHappiness(tone[0].tones)).score);
                 resolve(that.extractHappiness(tone[0].tones));
 
             }).catch(function (err) {

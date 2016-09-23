@@ -1,21 +1,46 @@
 var util = require('util');
 var fs = require('fs');
 
-var dataStore = function () {
-    this.addData = function (chatContext, data) {
-        var conversations = this.getData();
+var graphStore = function () {
+    this.addData = function (questionField, field, data) {
+        var graphData = this.getData();
 
-        conversations[chatContext].push(data);
-        conversations.history.push(data);
+        graphData[questionField].field.push(field);
+        graphData[questionField].value.push(data);
 
-        fs.writeFileSync('./data.json', JSON.stringify(conversations), 'utf-8');
+        console.log(graphData);
+        //graphData.data.push(data);
+
+        fs.writeFileSync('./graph.json', JSON.stringify(graphData), 'utf-8');
     };
 
     this.getData = function () {
-        return require('./data.json');
+        return require('./graph.json');
     };
 
 };
 
 
-module.exports = new dataStore();
+module.exports = new graphStore();
+
+/*
+
+ {
+ "Process": {
+ "field": [],
+ "value": []
+ },
+ "Navigation": {
+ "field": [],
+ "value": []
+ },
+ "Product": {
+ "field": [],
+ "value": []
+ },
+ "Delivery": {
+ "field": [],
+ "value": []
+ }
+ }
+*/
