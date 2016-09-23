@@ -85,9 +85,9 @@ export default class Display extends React.Component {
                 <div style={{"textAlign": "center"}}>
                     {show.skip && <input type="button" disabled={show.disableSkip}style={{"fontSize": "20px"}} className="btn btn-primary"
                                          value="Skip"/>}
-                    {!show.skip && <input onClick={this._onSubmit} type="button" style={{"fontSize": "20px"}} className="btn btn-primary"
+                    {!show.skip && <input  type="button" style={{"fontSize": "20px"}} className="btn btn-primary"
                                          value="Submit"/>}
-                    {(!show.skip && show.chat) && <input  type="button" style={{"fontSize": "20px"}} className="btn btn-success"
+                    {(!show.skip /*&& show.chat*/) && <input onClick={this._onSubmit} type="button" style={{"fontSize": "20px"}} className="btn btn-success"
                                           value="Chat"/>}
 
                 </div>

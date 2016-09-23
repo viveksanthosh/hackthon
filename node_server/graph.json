@@ -8,31 +8,11 @@
     "value": []
   },
   "Product": {
-    "field": [
-      "Product Question 1",
-      "Product Question 2",
-      "Product Question 3",
-      "Product Question 4"
-    ],
-    "value": [
-      0.603704,
-      0.603704,
-      0.603704,
-      0.603704
-    ]
+    "field": [],
+    "value": []
   },
   "Delivery": {
-    "field": [
-      "Delivery Question 1",
-      "Delivery Question 2",
-      "Delivery Question 3",
-      "Delivery Question 4"
-    ],
-    "value": [
-      0.603704,
-      0,
-      0,
-      0.603704
-    ]
+    "field": [],
+    "value": []
   }
 }

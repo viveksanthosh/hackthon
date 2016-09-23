@@ -97234,9 +97234,9 @@ var Display = function (_React$Component) {
                     { style: { "textAlign": "center" } },
                     show.skip && _react2.default.createElement('input', { type: 'button', disabled: show.disableSkip, style: { "fontSize": "20px" }, className: 'btn btn-primary',
                         value: 'Skip' }),
-                    !show.skip && _react2.default.createElement('input', { onClick: this._onSubmit, type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-primary',
+                    !show.skip && _react2.default.createElement('input', { type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-primary',
                         value: 'Submit' }),
-                    !show.skip && show.chat && _react2.default.createElement('input', { type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-success',
+                    !show.skip /*&& show.chat*/ && _react2.default.createElement('input', { onClick: this._onSubmit, type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-success',
                         value: 'Chat' })
                 )
             );
