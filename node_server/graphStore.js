@@ -4,13 +4,10 @@ var fs = require('fs');
 var graphStore = function () {
     this.addData = function (questionField, field, data) {
         var graphData = this.getData();
-
+        console.log(questionField + " " + field + " " + data)
         graphData[questionField].field.push(field);
         graphData[questionField].value.push(data);
-
-        console.log(graphData);
-        //graphData.data.push(data);
-
+        console.log(graphData)
         fs.writeFileSync('./graph.json', JSON.stringify(graphData), 'utf-8');
     };
 
@@ -43,4 +40,4 @@ module.exports = new graphStore();
  "value": []
  }
  }
-*/
+ */

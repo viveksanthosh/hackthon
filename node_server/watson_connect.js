@@ -10,7 +10,7 @@ var Watson = function () {
                 "text": text
             }).then(function (result) {
                 var tone = (result.body.document_tone.tone_categories);
-                console.log(that.extractHappiness(tone[0].tones));
+
                 graphStore.addData(category, question, (that.extractHappiness(tone[0].tones)).score);
                 resolve(that.extractHappiness(tone[0].tones));
 

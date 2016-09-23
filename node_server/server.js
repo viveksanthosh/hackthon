@@ -23,10 +23,11 @@ router.post('/conversation', function (req, res) {
 
     var toAsk = req.body.questionNumber.toAsk;
     var currentQuestion = req.body.questionNumber.current;
-    var botMessage = "";
+    var botMessage = "", previousTopic="";
 
     //answer, previous question, category
-    watson.toneAnalise(req.body.message, previousQuestion ,toAsk[currentQuestion[0]]).then(joyData=> {
+    console.log(previousQuestion)
+    watson.toneAnalise(req.body.message, previousQuestion ,req.body.questionNumber.previousTopic).then(joyData=> {
        // graphStrore.addData(toAsk[currentQuestion[0]]);
 
         //console.log(previousQuestion + joyData.score);
@@ -37,6 +38,8 @@ router.post('/conversation', function (req, res) {
     if (currentQuestion === 'end') {
         botMessage = "@Bot: " + "Thank yoo for taking our survey, have a nice day";
     } else {
+        previousQuestion = questions[toAsk[currentQuestion[0]]][currentQuestion[1]];
+        previousTopic = toAsk[currentQuestion[0]];
         botMessage = "@Bot: " + questions[toAsk[currentQuestion[0]]][currentQuestion[1]];
         currentQuestion = incrementQuestions(toAsk, currentQuestion);
     }
@@ -48,7 +51,8 @@ router.post('/conversation', function (req, res) {
         conversation: chatHistory.history, nextQuestion: {
             toAsk: toAsk,
             current: currentQuestion,
-            previousQuestion: questions[toAsk[currentQuestion[0]]][currentQuestion[1]]
+            previousQuestion: previousQuestion,
+            previousTopic: previousTopic
         }
     });
 
@@ -66,8 +70,8 @@ router.get('/history', function (req, res) {
         conversation: dataStore.getData().history, nextQuestion: {
             toAsk: selectedQuestions,
             current: [0, 1],
-            previousQuestion: questions[selectedQuestions[0]][0]
-
+            previousQuestion: questions[selectedQuestions[0]][0],
+            previousTopic: selectedQuestions[0]
         }
     });
 });
