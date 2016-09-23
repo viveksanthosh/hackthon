@@ -1,28 +1,24 @@
 {
   "questions": {
     "Product": [
-      "Process Question 1",
-      "Process Question 2",
-      "Process Question 3",
-      "Process Question 4"
+      "Was the checkout process fast and efficient?",
+      "If you corresponded with a customer service or online-chat representative, did he answer your questions?",
+      "If you could improve one thing in our online store, what would it be?"
     ],
     "Navigation": [
-      "Navigation Question 1",
-      "Navigation Question 2",
-      "Navigation Question 3",
-      "Navigation Question 4"
+      "Once you visit our app, did you easily find your products?",
+      "Was the user interface easy to navigate?",
+      "Was there enough information about the product you were looking for?"
     ],
     "Product": [
-      "Product Question 1",
-      "Product Question 2",
-      "Product Question 3",
-      "Product Question 4"
+      "Did you receive the product you expected?",
+      "Was the packaging good?",
+      "Was the product expiry date satisfactory?"
     ],
     "Delivery": [
-      "Delivery Question 1",
-      "Delivery Question 2",
-      "Delivery Question 3",
-      "Delivery Question 4"
+      "Was the product delivered on time?",
+      "Did we communicate the order status accurately and in a timely manner?",
+      "Were the products delivered in good condition?"
     ]
   }
 }

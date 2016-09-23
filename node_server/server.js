@@ -6,6 +6,7 @@ var watson = require('./watson_connect');
 var questions = require('./questionMap').questions;
 var router = express.Router();
 var app = express();
+var rating = require('./ratings');
 var bodyParser = require('body-parser');
 
 
@@ -26,7 +27,6 @@ router.post('/conversation', function (req, res) {
     var botMessage = "", previousTopic="";
 
     //answer, previous question, category
-    console.log(previousQuestion)
     watson.toneAnalise(req.body.message, previousQuestion ,req.body.questionNumber.previousTopic).then(joyData=> {
        // graphStrore.addData(toAsk[currentQuestion[0]]);
 
@@ -63,6 +63,7 @@ router.get('/history', function (req, res) {
     var botData = "@Bot, Hello, how are you today? We would like to get some feedback on your purchase \n";
 
     var selectedQuestions = questionsToBeAsked();
+    console.log(selectedQuestions)
     botData += questions[selectedQuestions[0]][0];
     dataStore.addData("bot", botData);
 
@@ -78,6 +79,7 @@ router.get('/history', function (req, res) {
 
 router.post('/submitRatings', function (req, res) {
     ratingStore.setData(req.body);
+    rating = req.body;
     res.status(200).send();
 });
 
@@ -90,7 +92,7 @@ app.listen(8000, ()=> {
 
 
 function questionsToBeAsked() {
-    var rating = require('./ratings');
+
 
     if (rating.Delivery <= 2 && rating.Product <= 2) {
         return (["Delivery", "Product"]);
