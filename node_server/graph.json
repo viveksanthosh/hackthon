@@ -1,1 +1,26 @@
-{"Process":{"field":[],"value":[]},"Navigation":{"field":[],"value":[]},"Product":{"field":[],"value":[]},"Delivery":{"field":[],"value":[]}}
+{
+  "Process": {
+    "field": [],
+    "value": []
+  },
+  "Navigation": {
+    "field": [],
+    "value": []
+  },
+  "Product": {
+    "field": [
+      "Did you receive the product you expected?",
+      "Was the packaging good?",
+      "Was the product expiry date satisfactory?"
+    ],
+    "value": [
+      0.021967,
+      0.087639,
+      0.104696
+    ]
+  },
+  "Delivery": {
+    "field": [],
+    "value": []
+  }
+}

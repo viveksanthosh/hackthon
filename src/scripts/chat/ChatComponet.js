@@ -18,11 +18,11 @@ export default class Display extends React.Component {
         this._onChange = this._onChange.bind(this);
     }
 
-    componentWillMount(){
-        getCall('http://localhost:8000/history').then((data)=>{
+    componentWillMount() {
+        getCall('http://localhost:8000/history').then((data)=> {
             console.log(data.body)
-            this.setState({nextQuestion:data.body.nextQuestion});
-            this.setState({chat:data.body.conversation});
+            this.setState({nextQuestion: data.body.nextQuestion});
+            this.setState({chat: data.body.conversation});
         })
     }
 
@@ -31,7 +31,7 @@ export default class Display extends React.Component {
             "message": this.state.message,
             "questionNumber": this.state.nextQuestion
         }).then((response)=> {
-            this.setState({nextQuestion:response.body.nextQuestion});
+            this.setState({nextQuestion: response.body.nextQuestion});
             this.setState({chat: response.body.conversation});
         })
 
@@ -47,13 +47,15 @@ export default class Display extends React.Component {
         return (
             <div className="container">
                 <br/><br/><br/><br/>
-                <table style={{"marginLeft": "35%", "width": "40%"}} className="table">
+                <table
+                    style={{"width": "40%","border": "1px solid black", "marginLeft":"650px","background-color":"white", "box-shadow": "10px 10px 5px #f1f1f1"}}
+                    className="table">
                     <thead>
                     <tr>
-                        <th style={{"textAlign": "center"}}>Chat</th>
+                        <th style={{"textAlign": "center", "background-color":"black", "color":"white"}}>Feedback Chat</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{"background-color":"#333333", "color":"white"}}>
                     {this.state.chat.map((chat, index) => {
 
                         return (
@@ -64,10 +66,10 @@ export default class Display extends React.Component {
 
                     </tbody>
                 </table>
-                <div style={{"marginLeft": "43%"}}>
+                <div style={{"marginLeft": "64%", "width": "68%"}}>
                     <input onChange={this._onChange} style={{ "width": "40%"}} className="form-control"/>
                     <br/>
-                    <input type="button" onClick={this._onChatSubmit} style={{ "marginLeft": "15%"}}
+                    <input type="button" onClick={this._onChatSubmit} style={{ "marginLeft": "17%"}}
                            className="btn-primary" value="Send"/>
 
                 </div>

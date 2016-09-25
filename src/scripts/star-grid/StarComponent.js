@@ -77,18 +77,18 @@ export default class Display extends React.Component {
             <div>
                 <br/><br/><br/>
 
-                <div style={{"marginLeft": "25%"}}>
+                <div style={{"marginLeft": "30%","background-color":"#333333","padding":"10px 10px 10px 25px","border":"2px solid black","width":"550px", "color":"white", "boxShadow":"rgb(241, 241, 241) 10px 10px 5px"}}>
                     {starRow}
                 </div>
                 <br/>
 
-                <div style={{"textAlign": "center"}}>
+                <div style={{"textAlign": "center", "marginRight": "20px"}}>
                     {show.skip && <input type="button" disabled={show.disableSkip}style={{"fontSize": "20px"}} className="btn btn-primary"
                                          value="Skip"/>}
                     {!show.skip && <input  type="button" style={{"fontSize": "20px"}} className="btn btn-primary"
-                                         value="Submit"/>}
+                                         value="Done"/>}
                     {(!show.skip /*&& show.chat*/) && <input onClick={this._onSubmit} type="button" style={{"fontSize": "20px"}} className="btn btn-success"
-                                          value="Chat"/>}
+                                          value="Continue to Feedback"/>}
 
                 </div>
             </div>

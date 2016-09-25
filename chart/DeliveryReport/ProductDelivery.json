@@ -1,0 +1,8 @@
+{
+  "ProductDelivery": [
+	"OnTime", "Tracking", "Good condition"
+  ],
+ "Review": [
+   20, 15, 25
+   ]
+}

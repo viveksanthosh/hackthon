@@ -24,11 +24,11 @@ router.post('/conversation', function (req, res) {
 
     var toAsk = req.body.questionNumber.toAsk;
     var currentQuestion = req.body.questionNumber.current;
-    var botMessage = "", previousTopic="";
+    var botMessage = "", previousTopic = "";
 
     //answer, previous question, category
-    watson.toneAnalise(req.body.message, previousQuestion ,req.body.questionNumber.previousTopic).then(joyData=> {
-       // graphStrore.addData(toAsk[currentQuestion[0]]);
+    watson.toneAnalise(req.body.message, previousQuestion, req.body.questionNumber.previousTopic).then(joyData=> {
+        // graphStrore.addData(toAsk[currentQuestion[0]]);
 
         //console.log(previousQuestion + joyData.score);
         //console.log(toAsk[currentQuestion[0]]);
@@ -60,10 +60,10 @@ router.post('/conversation', function (req, res) {
 
 router.get('/history', function (req, res) {
 
-    var botData = "@Bot, Hello, how are you today? We would like to get some feedback on your purchase \n";
+    var botData = "@Bot, Hello, how are you today? We would like to get some feedback on your purchase. \n";
 
     var selectedQuestions = questionsToBeAsked();
-    console.log(selectedQuestions)
+
     botData += questions[selectedQuestions[0]][0];
     dataStore.addData("bot", botData);
 

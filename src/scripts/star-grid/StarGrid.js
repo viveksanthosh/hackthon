@@ -5,18 +5,18 @@ const StarGrid = props => {
     let stars = [1, 2, 3, 4, 5].map(number=> {
         let color, name;
         if (number <= props.selected) {
-            color = "gold";
+            color = "white";
         }
         else {
-            color = "red";
+            color = "grey";
         }
         name = number + '-' + props.gridName;
         return (<Star key={name} _onClick={props._onClick} id={name} color={color}/>);
 });
     return (
-        <div className="row">
+        <div className="row" style={{"width":"900px"}}>
                  <span className="col-xs-2">
-                    <label style={{"fontSize": "30px"}}>{props.gridName + ':'}</label>
+                    <label style={{"fontSize": "30px"}}>{props.gridName + ' '}</label>
                  </span>
             {stars}
         </div>

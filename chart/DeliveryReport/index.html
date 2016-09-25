@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style>
+        .button {
+            border-radius: 4px;
+            background-color: #f4511e;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '>';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -10px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1">
+        <a href="#" id="get-data" class="button" style="text-decoration: none; width:100%"><span>product delivery survey</span></a>
+        <!--<button class="button" id="get-data"><span>product delivery survey</span></button>-->
+        <div id="show-data">
+            <canvas id="myChart" width="1200" height="880" style="width: 600px; height: 400px;"></canvas>
+        </div>
+        <script src="Chart.js"></script>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#get-data').click(function () {
+                    var showData = $('#show-data');
+
+                    $.getJSON('ProductDelivery.json', function (data) {
+                        console.log('json reader');
+                        console.log(data);
+                        var proddel = data.ProductDelivery;
+                        var review = data.Review;
+
+                       if (proddel != undefined && review != undefined) {
+                            var ctx = document.getElementById("myChart");
+                            console.log('joutside son reader');
+                            console.log(proddel);
+                           var myChart = new Chart(ctx, {
+                               type: 'pie',
+                               data: {
+                                   labels: proddel,
+                                   datasets: [{
+                                       data: review,
+                                       backgroundColor: [
+                                           'rgba(255,99,132,1)',
+                                           'rgba(54, 162, 235, 1)',
+                                           'rgba(255, 206, 86, 1)',
+                                           'rgba(75, 192, 192, 1)'
+                                       ],
+                                       hoverBackgroundColor: [
+                                           'rgba(255, 99, 132, 0.2)',
+                                           'rgba(54, 162, 235, 0.2)',
+                                           'rgba(255, 206, 86, 0.2)',
+                                           'rgba(75, 192, 192, 0.2)'
+                                       ]
+                                   }]
+                               },
+                               options: {
+                                   scales: {
+                                       yAxes: [{
+                                           ticks: {
+                                               beginAtZero: true
+                                           }
+                                       }]
+                                   }
+                               }
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

@@ -96990,7 +96990,9 @@ var Display = function (_React$Component) {
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'table',
-                    { style: { "marginLeft": "35%", "width": "40%" }, className: 'table' },
+                    {
+                        style: { "width": "40%", "border": "1px solid black", "marginLeft": "650px", "background-color": "white", "box-shadow": "10px 10px 5px #f1f1f1" },
+                        className: 'table' },
                     _react2.default.createElement(
                         'thead',
                         null,
@@ -96999,14 +97001,14 @@ var Display = function (_React$Component) {
                             null,
                             _react2.default.createElement(
                                 'th',
-                                { style: { "textAlign": "center" } },
-                                'Chat'
+                                { style: { "textAlign": "center", "background-color": "black", "color": "white" } },
+                                'Feedback Chat'
                             )
                         )
                     ),
                     _react2.default.createElement(
                         'tbody',
-                        null,
+                        { style: { "background-color": "#333333", "color": "white" } },
                         this.state.chat.map(function (chat, index) {
 
                             return _react2.default.createElement(
@@ -97023,10 +97025,10 @@ var Display = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { style: { "marginLeft": "43%" } },
+                    { style: { "marginLeft": "64%", "width": "68%" } },
                     _react2.default.createElement('input', { onChange: this._onChange, style: { "width": "40%" }, className: 'form-control' }),
                     _react2.default.createElement('br', null),
-                    _react2.default.createElement('input', { type: 'button', onClick: this._onChatSubmit, style: { "marginLeft": "15%" },
+                    _react2.default.createElement('input', { type: 'button', onClick: this._onChatSubmit, style: { "marginLeft": "17%" },
                         className: 'btn-primary', value: 'Send' })
                 )
             );
@@ -97225,19 +97227,19 @@ var Display = function (_React$Component) {
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'div',
-                    { style: { "marginLeft": "25%" } },
+                    { style: { "marginLeft": "30%", "background-color": "#333333", "padding": "10px 10px 10px 25px", "border": "2px solid black", "width": "550px", "color": "white", "boxShadow": "rgb(241, 241, 241) 10px 10px 5px" } },
                     starRow
                 ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'div',
-                    { style: { "textAlign": "center" } },
+                    { style: { "textAlign": "center", "marginRight": "20px" } },
                     show.skip && _react2.default.createElement('input', { type: 'button', disabled: show.disableSkip, style: { "fontSize": "20px" }, className: 'btn btn-primary',
                         value: 'Skip' }),
                     !show.skip && _react2.default.createElement('input', { type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-primary',
-                        value: 'Submit' }),
+                        value: 'Done' }),
                     !show.skip /*&& show.chat*/ && _react2.default.createElement('input', { onClick: this._onSubmit, type: 'button', style: { "fontSize": "20px" }, className: 'btn btn-success',
-                        value: 'Chat' })
+                        value: 'Continue to Feedback' })
                 )
             );
         }
@@ -97270,23 +97272,23 @@ var StarGrid = function StarGrid(props) {
         var color = void 0,
             name = void 0;
         if (number <= props.selected) {
-            color = "gold";
+            color = "white";
         } else {
-            color = "red";
+            color = "grey";
         }
         name = number + '-' + props.gridName;
         return _react2.default.createElement(_Star2.default, { key: name, _onClick: props._onClick, id: name, color: color });
     });
     return _react2.default.createElement(
         'div',
-        { className: 'row' },
+        { className: 'row', style: { "width": "900px" } },
         _react2.default.createElement(
             'span',
             { className: 'col-xs-2' },
             _react2.default.createElement(
                 'label',
                 { style: { "fontSize": "30px" } },
-                props.gridName + ':'
+                props.gridName + ' '
             )
         ),
         stars
